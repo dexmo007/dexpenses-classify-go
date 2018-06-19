@@ -51,6 +51,10 @@ phases:
       # Package our application with AWS SAM
       - aws cloudformation package --template-file sam.yml --s3-bucket ${S3_BUCKET} --output-template-file packaged.yml
 
+  deploy:
+    commands:
+      - aws cloudformation deploy --template-file packaged.yml --stack-name dexpenses-classify
+
 artifacts:
   files:
     - packaged.yml
