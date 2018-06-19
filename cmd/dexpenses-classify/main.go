@@ -18,12 +18,12 @@ var config *mongo.Collection
 var receipts *mongo.Collection
 
 func init() {
-	mongoUri := os.Getenv("MONGO_URI")
-	if len(mongoUri) == 0 {
+	mongoURI := os.Getenv("MONGO_URI")
+	if len(mongoURI) == 0 {
 		log.Fatal("MONGO_URI environment variable is missing")
 		return
 	}
-	client, err := mongo.NewClient(mongoUri)
+	client, err := mongo.NewClient(mongoURI)
 	if err != nil {
 		log.Fatal(err)
 		return
@@ -53,6 +53,7 @@ func init() {
 	//}
 }
 
+//HandleRequest entry point for lambda function
 func HandleRequest(ctx context.Context, e events.DynamoDBEvent) (string, error) {
 	if config == nil || receipts == nil {
 		message := "could not grab collection"
