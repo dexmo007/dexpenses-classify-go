@@ -15,4 +15,4 @@
 .idea
 
 # deploy.sh output
-out/
+bin/

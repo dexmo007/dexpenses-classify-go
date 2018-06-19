@@ -11,37 +11,11 @@ import (
 	"os"
 	"github.com/rhymond/go-money"
 	"errors"
+	"dexmohq.com/dexpenses-classify/internal/pkg/models"
 )
 
 var config *mongo.Collection
 var receipts *mongo.Collection
-
-type PaymentMethod int
-
-const (
-	Debit   PaymentMethod = 0
-	Credit
-	Cash
-	Unknown
-)
-
-type PersistentMoney struct {
-	Amount   float64
-	Currency string
-}
-
-func asPersistentMoney(m *money.Money) PersistentMoney {
-	return PersistentMoney{Amount: float64(m.Amount()) / 100, Currency: m.Currency().Code}
-}
-
-type Receipt struct {
-	ID            objectid.ObjectID `bson:"_id,omitempty"`
-	Date          time.Time
-	Time          time.Time
-	Total         PersistentMoney
-	PaymentMethod PaymentMethod     `bson:"paymentMethod"`
-	Category      string
-}
 
 func init() {
 	mongoUri := os.Getenv("MONGO_URI")
@@ -91,7 +65,9 @@ func HandleRequest(ctx context.Context, e events.DynamoDBEvent) (string, error) 
 	//	println(record.Change.NewImage)
 	//}
 	result, err := receipts.InsertOne(context.Background(),
-		Receipt{ID: objectid.New(), Date: time.Now(), Time: time.Now(), Total: asPersistentMoney(money.New(2999, "EUR")), PaymentMethod: Cash, Category: "food"})
+		dexpenses.Receipt{ID: objectid.New(), Date: time.Now(), Time: time.Now(),
+			Total: dexpenses.AsPersistentMoney(money.New(2999, "EUR")),
+			PaymentMethod: dexpenses.Cash, Category: "food"})
 	if err != nil {
 		log.Fatal(err)
 		return "Error", err
