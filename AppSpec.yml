@@ -1,0 +1,8 @@
+version: 0.0
+Resources:
+  - myLambdaFunction:
+      Type: AWS::Lambda::Function
+      Properties:
+        Name: "dexpenses-classify"
+        CurrentVersion: "1"
+        TargetVersion: "2"
