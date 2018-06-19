@@ -1,1 +1,3 @@
 # dexpenses-classify-go
+
+![CodeBuild badge](https://codebuild.eu-west-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiQUFhYXlhMVV2SnhJVEMvNjN5b21DaXo3dFFkOFN1eUhudTQ1NEJ6b24rTytWWkh1UmZMT1JnZHF6SUxqYzB4MVBNTWs1SU9jLzVqT1pCUDA2SWxRNkhjPSIsIml2UGFyYW1ldGVyU3BlYyI6IlBqZmVnaHh6QjIzRndNakwiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
