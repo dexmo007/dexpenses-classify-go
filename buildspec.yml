@@ -5,7 +5,7 @@ env:
     # This S3 bucket will be used to store the packaged Lambda deployment bundle.
     # Make sure to provide a valid S3 bucket name (it must exist already).
     # The AWS CodeBuild IAM role must allow write access to it.
-    S3_BUCKET: "dexpenses-classify-code"
+    S3_BUCKET: "codepipeline-eu-west-1-200546325398"
     PACKAGE: "dexmohq.com/dexpenses-classify"
 
 phases:
